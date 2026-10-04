@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Alex | Nexa Sistemas – Desenvolvedor de Software e Web</title>
+  <meta name="description" content="Portfólio de Alex, da Nexa Sistemas: desenvolvedor de software e web em Pouso Redondo/SC. Aplicações modernas, funcionais e escaláveis.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alex | Nexa Sistemas – Transformo ideias em soluções digitais">
+  <meta property="og:description" content="Desenvolvimento web, sistemas, APIs e bancos de dados com foco em resultados.">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#0a0e1a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A0%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== Base ========== */
+    :root {
+      color-scheme: dark;
+      --bg: #0a0e1a;
+      --bg2: #0f1424;
+      --card: rgba(255, 255, 255, .04);
+      --bd: rgba(255, 255, 255, .09);
+      --tx: #e8ecf5;
+      --mut: #9aa4bd;
+      --ac: #4f8cff;
+      --ac2: #22d3ee;
+      --r: 16px;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(80px + env(safe-area-inset-top, 0px));
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; }
+
+    .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+    section { padding: 96px 0; }
+    .alt { background: var(--bg2); }
+
+    .ico {
+      width: 1.2em;
+      height: 1.2em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+    }
+
+    h1, h2, h3 { line-height: 1.15; margin: 0; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.02em; margin-bottom: 12px; }
+
+    .eyebrow {
+      color: var(--ac2);
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .lead { color: var(--mut); max-width: 620px; margin: 0 0 48px; }
+
+    .grad {
+      background: linear-gradient(90deg, var(--ac), var(--ac2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    :focus-visible { outline: 2px solid var(--ac2); outline-offset: 3px; border-radius: 8px; }
+
+    /* ========== Botões e cards ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: .95rem;
+      border: 1px solid var(--bd);
+      background: var(--card);
+      color: var(--tx);
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px) scale(1.02); border-color: var(--ac); }
+
+    .btn.pri {
+      background: linear-gradient(135deg, var(--ac), #6d5cff);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 8px 24px -8px rgba(79, 140, 255, .6);
+    }
+
+    .sm { padding: 9px 16px; font-size: .85rem; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: var(--r);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px -15px rgba(0, 0, 0, .6);
+      transition: transform .3s, border-color .3s;
+    }
+
+    .card:hover { transform: translateY(-5px); border-color: rgba(79, 140, 255, .45); }
+
+    /* ========== Navbar ========== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding-top: env(safe-area-inset-top, 0px);
+      transition: background .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    header.sc {
+      background: rgba(10, 14, 26, .8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--bd);
+    }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+
+    .logo { font-weight: 800; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
+
+    .logo i {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--ac), var(--ac2));
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      font-size: .8rem;
+      color: #06101f;
+    }
+
+    nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+
+    nav a.l { font-size: .92rem; color: var(--mut); position: relative; padding: 4px 0; transition: color .2s; }
+
+    nav a.l::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: var(--ac2);
+      transition: width .25s;
+    }
+
+    nav a.l:hover, nav a.l.on { color: var(--tx); }
+    nav a.l:hover::after, nav a.l.on::after { width: 100%; }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid var(--bd);
+      border-radius: 10px;
+      color: var(--tx);
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      place-items: center;
+    }
+
+    /* ========== Hero ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -120px;
+      top: 10%;
+      background: radial-gradient(circle, rgba(79, 140, 255, .22), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hgrid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hi { color: var(--ac2); font-weight: 600; margin: 0 0 14px; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.1rem); letter-spacing: -.03em; font-weight: 800; }
+    .role { font-size: 1.1rem; font-weight: 600; margin: 18px 0 14px; }
+    .hero p.d { color: var(--mut); max-width: 520px; margin: 0 0 32px; }
+    .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .vis { position: relative; aspect-ratio: 1; max-width: 420px; width: 100%; margin-inline: auto; }
+
+    .vis .ring {
+      position: absolute;
+      inset: 6%;
+      border-radius: 50%;
+      border: 1px dashed rgba(79, 140, 255, .4);
+      animation: spin 40s linear infinite;
+    }
+
+    .vis .av {
+      position: absolute;
+      inset: 14%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #16203d, #0c1226);
+      border: 1px solid var(--bd);
+      overflow: hidden;
+      box-shadow: 0 20px 60px -20px rgba(79, 140, 255, .5);
+    }
+
+    .chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      font-size: .82rem;
+      font-weight: 500;
+      border-radius: 12px;
+      animation: fl 6s ease-in-out infinite;
+    }
+
+    .chip .ico { color: var(--ac2); }
+    .c1 { top: 6%; left: -2%; }
+    .c2 { top: 20%; right: -6%; animation-delay: -1.5s; }
+    .c3 { bottom: 16%; left: -6%; animation-delay: -3s; }
+    .c4 { bottom: 4%; right: 2%; animation-delay: -4.5s; }
+
+    @keyframes fl { 50% { transform: translateY(-10px); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ========== Sobre ========== */
+    .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+    .about p { color: var(--mut); margin: 0 0 16px; }
+    .info { display: grid; gap: 14px; }
+    .info .card { padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .info .ico { color: var(--ac); margin-top: 4px; font-size: 1.3rem; }
+    .info small { display: block; color: var(--mut); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .info b { font-weight: 600; font-size: .95rem; }
+
+    /* ========== Linha do tempo ========== */
+    .tl {
+      position: relative;
+      margin-left: 8px;
+      padding-left: 32px;
+      border-left: 2px solid var(--bd);
+      display: grid;
+      gap: 28px;
+      max-width: 760px;
+    }
+
+    .tl div { position: relative; }
+
+    .tl div::before {
+      content: "";
+      position: absolute;
+      left: -41px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--ac);
+    }
+
+    .tl span { color: var(--ac2); font-size: .82rem; font-weight: 600; }
+    .tl h3 { font-size: 1.1rem; margin: 2px 0 6px; }
+    .tl p { margin: 0; color: var(--mut); font-size: .95rem; }
+
+    /* ========== Habilidades ========== */
+    .cat { margin-bottom: 44px; }
+    .cat h3 { font-size: 1.15rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .cat h3 .ico { color: var(--ac2); }
+    .sg { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+    .sk { padding: 20px; }
+    .sk .t { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+    .sk .t .ico { color: var(--ac); font-size: 1.4rem; }
+    .sk p { color: var(--mut); font-size: .88rem; margin: 10px 0 14px; }
+    .bar { height: 6px; border-radius: 6px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--ac), var(--ac2));
+      transition: width 1.2s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .lv { font-size: .75rem; color: var(--mut); margin-top: 6px; }
+
+    /* ========== Projetos ========== */
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+
+    .filters button {
+      padding: 8px 18px;
+      border-radius: 99px;
+      border: 1px solid var(--bd);
+      background: var(--card);
+      color: var(--mut);
+      cursor: pointer;
+      font: 500 .88rem Inter, sans-serif;
+      transition: .2s;
+    }
+
+    .filters button:hover { color: var(--tx); }
+    .filters button.on { background: var(--ac); border-color: var(--ac); color: #fff; }
+
+    .pg { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px; }
+    .pj { overflow: hidden; display: flex; flex-direction: column; position: relative; }
+    .pj.hide { display: none; }
+    .cov { height: 170px; display: grid; place-items: center; transition: transform .5s; }
+    .cov .ico { width: 56px; height: 56px; color: rgba(255, 255, 255, .9); stroke-width: 1.4; }
+    .pj:hover .cov { transform: scale(1.06); }
+    .cw { overflow: hidden; }
+    .pb { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .tag { font-size: .75rem; font-weight: 600; color: var(--ac2); text-transform: uppercase; letter-spacing: .08em; }
+    .pb h3 { font-size: 1.2rem; }
+    .pb h3 a::after { content: ""; position: absolute; inset: 0; }
+    .pb p { color: var(--mut); font-size: .92rem; margin: 0; }
+    .tech { font-size: .82rem; color: var(--tx); opacity: .85; }
+    .pa { display: flex; gap: 10px; margin-top: auto; padding-top: 8px; position: relative; z-index: 2; }
+
+    /* ========== Números ========== */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .stats .card { padding: 32px 16px; }
+    .stats b { display: block; font-size: 2.6rem; font-weight: 800; letter-spacing: -.02em; }
+    .stats span { color: var(--mut); font-size: .92rem; }
+
+    /* ========== Depoimentos ========== */
+    .tg { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .tt { padding: 26px; }
+    .tt p { margin: 0 0 20px; color: var(--mut); font-size: .95rem; }
+    .who { display: flex; align-items: center; gap: 12px; }
+
+    .who i {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--ac), #6d5cff);
+      color: #fff;
+    }
+
+    .who b { display: block; font-size: .95rem; }
+    .who small { color: var(--mut); }
+
+    /* ========== Contato ========== */
+    .cg { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+    .soc { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+    form { padding: 28px; display: grid; gap: 16px; }
+    .f label { display: block; font-size: .85rem; font-weight: 500; margin-bottom: 6px; }
+
+    .f input, .f textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--bd);
+      background: rgba(255, 255, 255, .04);
+      color: var(--tx);
+      font: inherit;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .f textarea { min-height: 120px; resize: vertical; }
+
+    .f input:focus, .f textarea:focus {
+      outline: none;
+      border-color: var(--ac);
+      box-shadow: 0 0 0 3px rgba(79, 140, 255, .2);
+    }
+
+    .f.err input, .f.err textarea { border-color: #ff5d73; }
+    .f.ok input, .f.ok textarea { border-color: #2fd68b; }
+    .f em { display: none; font-style: normal; color: #ff8497; font-size: .78rem; margin-top: 4px; }
+    .f.err em { display: block; }
+    #st { font-size: .9rem; color: #2fd68b; margin: 0; min-height: 1.2em; }
+
+    /* ========== Footer ========== */
+    footer { border-top: 1px solid var(--bd); padding: 56px 0 28px; }
+    .fg { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .fg p { color: var(--mut); margin: 8px 0 0; font-size: .92rem; max-width: 320px; }
+    .fl { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; color: var(--mut); font-size: .92rem; flex-wrap: wrap; }
+    .fl a:hover { color: var(--tx); }
+    .fs { display: flex; gap: 10px; margin-top: 16px; }
+
+    .fs a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      border: 1px solid var(--bd);
+      color: var(--mut);
+      transition: .2s;
+    }
+
+    .fs a:hover { color: var(--tx); border-color: var(--ac); transform: translateY(-2px); }
+    .cp { text-align: center; color: var(--mut); font-size: .82rem; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bd); }
+
+    /* ========== Animação de entrada ========== */
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+    .rv.in { opacity: 1; transform: none; }
+
+    /* ========== Responsivo ========== */
+    @media (max-width: 900px) {
+      section { padding: 72px 0; }
+      .hgrid, .about, .cg { grid-template-columns: 1fr; }
+      .vis { max-width: 340px; order: -1; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .burger { display: grid; }
+
+      nav ul {
+        position: absolute;
+        top: calc(68px + env(safe-area-inset-top, 0px));
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(10, 14, 26, .97);
+        border-bottom: 1px solid var(--bd);
+        padding: 8px 20px 20px;
+        display: none;
+      }
+
+      nav ul.open { display: flex; }
+      nav ul li { padding: 12px 0; border-bottom: 1px solid var(--bd); }
+      .nav .btn.hd { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .cta .btn { width: 100%; }
+      .soc { grid-template-columns: 1fr; }
+      .chip { font-size: .72rem; padding: 7px 10px; }
+      .c2 { right: -2%; }
+      .c3 { left: -2%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .rv { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ícones (sprite SVG) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6" /></symbol>
+    <symbol id="i-srv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2" /><rect x="3" y="14" width="18" height="6" rx="2" /><path d="M7 7h.01M7 17h.01" /></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" /></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 17l-4 4-5.7-1.3a4 4 0 0 0-5-5L3 7l4-4z" /></symbol>
+    <symbol id="i-api" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" /><path d="M9 12h6" /></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8" /></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5" /></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.7 7L3 21l2-6A8 8 0 1 1 21 12z" /></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3" /></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5a3 3 0 0 0-1-2.5c3 0 6-1.5 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 3 6 6 6a3 3 0 0 0-1 2.5V21" /></symbol>
+    <symbol id="i-arr" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+  </svg>
+
+  <!-- ========== NAVBAR ========== -->
+  <header id="hd">
+    <div class="wrap nav">
+      <a href="#inicio" class="logo" aria-label="Nexa Sistemas – início">
+        <i>N</i>Nexa Sistemas
+      </a>
+
+      <nav aria-label="Principal">
+        <ul id="menu">
+          <li><a class="l" href="#inicio">Início</a></li>
+          <li><a class="l" href="#sobre">Sobre</a></li>
+          <li><a class="l" href="#habilidades">Habilidades</a></li>
+          <li><a class="l" href="#projetos">Projetos</a></li>
+          <li><a class="l" href="#experiencia">Experiência</a></li>
+          <li><a class="l" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a href="#contato" class="btn pri sm hd">Vamos conversar</a>
+
+      <button class="burger" id="bg" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <svg class="ico"><use href="#i-menu" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio">
+      <div class="wrap hgrid">
+        <div class="rv">
+          <p class="hi">Olá, eu sou Alex da Nexa Sistemas</p>
+          <h1>Transformo ideias em <span class="grad">soluções digitais.</span></h1>
+          <p class="role">Desenvolvedor de Software | Desenvolvedor Web | Tecnologia</p>
+          <p class="d">Desenvolvo aplicações modernas, funcionais e escaláveis, combinando tecnologia, criatividade e foco em resultados.</p>
+          <div class="cta">
+            <a href="#projetos" class="btn pri">Ver meus projetos</a>
+            <a href="#contato" class="btn">Entre em contato</a>
+          </div>
+        </div>
+
+        <div class="vis rv" aria-label="Avatar de Alex">
+          <div class="ring"></div>
+          <div class="av">
+            <svg viewBox="0 0 200 200" role="img" aria-label="Avatar ilustrado de Alex, desenvolvedor">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#4f8cff" />
+                  <stop offset="1" stop-color="#22d3ee" />
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="80" r="34" fill="url(#g)" opacity=".9" />
+              <path d="M30 200c0-44 31-70 70-70s70 26 70 70z" fill="url(#g)" opacity=".7" />
+            </svg>
+          </div>
+          <div class="chip card c1"><svg class="ico"><use href="#i-code" /></svg>Desenvolvimento Web</div>
+          <div class="chip card c2"><svg class="ico"><use href="#i-stack" /></svg>Sistemas</div>
+          <div class="chip card c3"><svg class="ico"><use href="#i-api" /></svg>APIs</div>
+          <div class="chip card c4"><svg class="ico"><use href="#i-db" /></svg>Banco de Dados</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section id="sobre" class="alt">
+      <div class="wrap about">
+        <div class="rv">
+          <p class="eyebrow">Sobre mim</p>
+          <h2>Conheça um pouco sobre mim</h2>
+          <p>Sou apaixonado por tecnologia e desenvolvimento de soluções digitais. Minha experiência envolve desenvolvimento de aplicações, criação de sistemas, integração de APIs, bancos de dados e desenvolvimento de interfaces modernas.</p>
+          <p>Busco sempre aprender, entregar código limpo e criar produtos que resolvam problemas reais de empresas e pessoas. Meu objetivo é crescer como profissional e contribuir com projetos que gerem impacto.</p>
+        </div>
+
+        <div class="info rv">
+          <div class="card">
+            <svg class="ico"><use href="#i-clock" /></svg>
+            <div><small>Experiência</small><b>3 anos</b></div>
+          </div>
+          <div class="card">
+            <svg class="ico"><use href="#i-box" /></svg>
+            <div><small>Projetos realizados</small><b>SaaS de gerenciamento de empresas; aplicativo de gerenciamento de eventos</b></div>
+          </div>
+          <div class="card">
+            <svg class="ico"><use href="#i-code" /></svg>
+            <div><small>Tecnologias</small><b>HTML, CSS, Node, JavaScript, PHP, Laravel, SQL</b></div>
+          </div>
+          <div class="card">
+            <svg class="ico"><use href="#i-pin" /></svg>
+            <div><small>Localização</small><b>Pouso Redondo / SC</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HABILIDADES ========== -->
+    <section id="habilidades">
+      <div class="wrap">
+        <p class="eyebrow rv">Stack</p>
+        <h2 class="rv">Minhas habilidades</h2>
+        <p class="lead rv">Tecnologias que uso no dia a dia, com o nível de domínio atual de cada uma.</p>
+        <div id="skills"></div>
+      </div>
+    </section>
+
+    <!-- ========== PROJETOS ========== -->
+    <section id="projetos" class="alt">
+      <div class="wrap">
+        <p class="eyebrow rv">Portfólio</p>
+        <h2 class="rv">Projetos em destaque</h2>
+        <p class="lead rv">Clique em qualquer projeto para ver mais detalhes.</p>
+        <div class="filters rv" id="flt" role="group" aria-label="Filtrar projetos"></div>
+        <div class="pg" id="pg"></div>
+      </div>
+    </section>
+
+    <!-- ========== NÚMEROS ========== -->
+    <section aria-label="Números">
+      <div class="wrap stats">
+        <div class="card rv"><b class="grad" data-n="10" data-s="+">0</b><span>Projetos</span></div>
+        <div class="card rv"><b class="grad" data-n="5" data-s="+">0</b><span>Tecnologias</span></div>
+        <div class="card rv"><b class="grad" data-n="3" data-s="+">0</b><span>Anos de experiência</span></div>
+        <div class="card rv"><b class="grad" data-n="100" data-s="%">0</b><span>Dedicação</span></div>
+      </div>
+    </section>
+
+    <!-- ========== EXPERIÊNCIA ========== -->
+    <section id="experiencia" class="alt">
+      <div class="wrap">
+        <p class="eyebrow rv">Trajetória</p>
+        <h2 class="rv">Experiência</h2>
+        <p class="lead rv">Os principais marcos da minha evolução profissional.</p>
+
+        <div class="tl rv">
+          <div>
+            <span>Atual</span>
+            <h3>Desenvolvedor — Nexa Sistemas</h3>
+            <p>Criação de sistemas web, integrações via API e interfaces modernas para clientes e projetos próprios.</p>
+          </div>
+          <div>
+            <span>Projeto</span>
+            <h3>SaaS de gerenciamento de empresas</h3>
+            <p>Plataforma com clientes, serviços, usuários e módulo financeiro, usando Laravel e PostgreSQL.</p>
+          </div>
+          <div>
+            <span>Projeto</span>
+            <h3>Aplicativo de gerenciamento de eventos</h3>
+            <p>App mobile com Flutter e Supabase para organização de eventos e participantes.</p>
+          </div>
+          <div>
+            <span>Início</span>
+            <h3>Primeiros passos em desenvolvimento</h3>
+            <p>Fundamentos de HTML, CSS, JavaScript e PHP, com foco em boas práticas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DEPOIMENTOS ========== -->
+    <section id="depoimentos">
+      <div class="wrap">
+        <p class="eyebrow rv">Depoimentos</p>
+        <h2 class="rv">O que dizem sobre meu trabalho</h2>
+        <p class="lead rv">Exemplos fictícios, apenas como espaço reservado.</p>
+        <div class="tg" id="tg"></div>
+      </div>
+    </section>
+
+    <!-- ========== CONTATO ========== -->
+    <section id="contato" class="alt">
+      <div class="wrap cg">
+        <div class="rv">
+          <p class="eyebrow">Contato</p>
+          <h2>Vamos transformar sua ideia em realidade?</h2>
+          <p class="lead" style="margin-bottom:28px">Tem um projeto em mente, uma oportunidade profissional ou simplesmente quer conversar sobre tecnologia? Entre em contato comigo.</p>
+
+          <div class="soc">
+            <a class="btn" href="https://wa.me/5547992827085" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat" /></svg>WhatsApp</a>
+            <a class="btn" href="mailto:a2odevelopment@gmail.com"><svg class="ico"><use href="#i-mail" /></svg>E-mail</a>
+            <a class="btn" href="https://linkedin.com/in/alexssander-cristino" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in" /></svg>LinkedIn</a>
+            <a class="btn" href="https://github.com/alexssander-cristino" target="_blank" rel="noopener"><svg class="ico"><use href="#i-gh" /></svg>GitHub</a>
+          </div>
+        </div>
+
+        <form class="card rv" id="fm" novalidate>
+          <div class="f">
+            <label for="nm">Nome</label>
+            <input id="nm" name="nome" autocomplete="name" required minlength="2">
+            <em>Informe seu nome.</em>
+          </div>
+          <div class="f">
+            <label for="em">E-mail</label>
+            <input id="em" name="email" type="email" autocomplete="email" required>
+            <em>Informe um e-mail válido.</em>
+          </div>
+          <div class="f">
+            <label for="as">Assunto</label>
+            <input id="as" name="assunto" required minlength="3">
+            <em>Informe o assunto.</em>
+          </div>
+          <div class="f">
+            <label for="ms">Mensagem</label>
+            <textarea id="ms" name="mensagem" required minlength="10"></textarea>
+            <em>Escreva ao menos 10 caracteres.</em>
+          </div>
+          <button class="btn pri" type="submit">Enviar mensagem</button>
+          <p id="st" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="wrap">
+      <div class="fg">
+        <div>
+          <a href="#inicio" class="logo"><i>N</i>Nexa Sistemas</a>
+          <p>Desenvolvendo soluções digitais com tecnologia e propósito.</p>
+          <div class="fs">
+            <a href="https://github.com/alexssander-cristino" aria-label="GitHub" target="_blank" rel="noopener"><svg class="ico"><use href="#i-gh" /></svg></a>
+            <a href="https://linkedin.com/in/alexssander-cristino" aria-label="LinkedIn" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in" /></svg></a>
+            <a href="https://wa.me/5547992827085" aria-label="WhatsApp" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat" /></svg></a>
+            <a href="mailto:a2odevelopment@gmail.com" aria-label="E-mail"><svg class="ico"><use href="#i-mail" /></svg></a>
+          </div>
+        </div>
+
+        <ul class="fl">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <p class="cp" style="margin-inline:auto;max-width:none">© 2026 Nexa Sistemas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const ic = n => `<svg class="ico"><use href="#i-${n}"/></svg>`;
+
+    /* ========== DADOS (edite aqui) ========== */
+    const skills = [
+      ["Front-end", "code", [
+        ["HTML", "Estrutura semântica e acessível.", 4],
+        ["CSS", "Layouts responsivos e animações.", 4],
+        ["JavaScript", "Interatividade e lógica no cliente.", 3],
+        ["React", "Componentes e interfaces dinâmicas.", 2],
+        ["Flutter", "Apps mobile multiplataforma.", 2]
+      ]],
+      ["Back-end", "srv", [
+        ["Node.js", "Servidores e APIs com JavaScript.", 3],
+        ["PHP", "Aplicações web server-side.", 3],
+        ["Laravel", "Framework para sistemas robustos.", 3],
+        ["APIs REST", "Criação e integração de serviços.", 3]
+      ]],
+      ["Banco de dados", "db", [
+        ["PostgreSQL", "Modelagem e consultas avançadas.", 3],
+        ["MySQL", "Banco relacional para aplicações web.", 3],
+        ["Supabase", "Backend como serviço e autenticação.", 2]
+      ]],
+      ["Ferramentas", "tool", [
+        ["Git", "Controle de versão e fluxo de trabalho.", 3],
+        ["GitHub", "Repositórios e colaboração.", 3],
+        ["Docker", "Ambientes padronizados.", 2],
+        ["Figma", "Protótipos e design de interfaces.", 2]
+      ]]
+    ];
+
+    const levels = ["", "Básico", "Intermediário", "Avançado", "Sólido"];
+
+    // [nome, categoria, descrição, tecnologias, ícone, gradiente, link do projeto, link do código]
+    // Deixe "" para esconder o botão correspondente.
+    const projects = [
+      ["Sistema de Gestão", "Sistemas", "Aplicação web desenvolvida para gerenciamento de clientes, serviços, usuários e financeiro.", "Laravel • PostgreSQL • JavaScript", "stack", "#4f8cff,#6d5cff",
+        "https://sistemaagendamento-lavajato-sistema.vercel.app/", "https://github.com/alexssander-cristino/SistemaOr-amento"],
+      ["Gestão de Eventos", "Mobile", "Aplicativo para criar e organizar eventos, controlar participantes e enviar avisos.", "Flutter • Supabase", "phone", "#22d3ee,#4f8cff",
+        "", "https://github.com/alexssander-cristino/SistemaOr-amento.git"],
+      ["Portfólio Pessoal", "Web", "Site pessoal para apresentar habilidades, projetos e informações de contato.", "HTML • CSS • JavaScript", "code", "#4f8cff,#22d3ee",
+        "", "https://github.com/alexssander-cristino/portifolio"]
+    ];
+
+    // [nome, cargo, empresa, depoimento]
+    const testimonials = [
+      ["Mariana Souza", "Gerente de Projetos", "Empresa Exemplo", "Entrega no prazo e ótima comunicação. O sistema superou nossas expectativas."],
+      ["Carlos Lima", "CEO", "Startup Modelo", "Profissional atencioso, com visão técnica e foco no resultado do negócio."],
+      ["Fernanda Alves", "Coordenadora", "Organização Demo", "Interface moderna e intuitiva. Nossa equipe adotou a ferramenta rapidamente."]
+    ];
+
+
+    /* ========== Renderização ========== */
+    $("#skills").innerHTML = skills.map(([categoria, icone, lista]) => `
+      <div class="cat">
+        <h3 class="rv">${ic(icone)}${categoria}</h3>
+        <div class="sg">
+          ${lista.map(([nome, desc, nivel]) => `
+            <div class="card sk rv">
+              <div class="t">${ic(icone)}${nome}</div>
+              <p>${desc}</p>
+              <div class="bar"><i data-w="${nivel * 25}"></i></div>
+              <div class="lv">${levels[nivel]}</div>
+            </div>`).join("")}
+        </div>
+      </div>`).join("");
+
+    $("#pg").innerHTML = projects.map(([nome, cat, desc, tech, icone, grad, link, codigo]) => {
+      const [a, b] = grad.split(",");
+      const principal = link || codigo || "#";
+      return `
+        <article class="card pj rv" data-c="${cat}">
+          <div class="cw">
+            <div class="cov" style="background:linear-gradient(135deg,${a},${b})">${ic(icone)}</div>
+          </div>
+          <div class="pb">
+            <span class="tag">${cat}</span>
+            <h3><a href="${principal}" target="_blank" rel="noopener">${nome}</a></h3>
+            <p>${desc}</p>
+            <div class="tech">${tech}</div>
+            <div class="pa">
+              ${link ? `<a class="btn pri sm" href="${link}" target="_blank" rel="noopener">Ver projeto ${ic("arr")}</a>` : ""}
+              ${codigo ? `<a class="btn sm" href="${codigo}" target="_blank" rel="noopener">${ic("gh")}Código</a>` : ""}
+            </div>
+          </div>
+        </article>`;
+    }).join("");
+
+    $("#flt").innerHTML = ["Todos", "Web", "Mobile", "Sistemas", "Outros"]
+      .map((f, i) => `<button type="button" class="${i ? "" : "on"}" data-f="${f}">${f}</button>`)
+      .join("");
+
+    $("#tg").innerHTML = testimonials.map(([nome, cargo, empresa, texto]) => `
+      <figure class="card tt rv" style="margin:0">
+        <p>“${texto}”</p>
+        <figcaption class="who">
+          <i aria-hidden="true">${nome[0]}</i>
+          <div><b>${nome}</b><small>${cargo} · ${empresa}</small></div>
+        </figcaption>
+      </figure>`).join("");
+
+    /* ========== Navbar ========== */
+    const header = $("#hd");
+    const burger = $("#bg");
+    const menu = $("#menu");
+
+    addEventListener("scroll", () => {
+      header.classList.toggle("sc", scrollY > 20);
+    }, { passive: true });
+
+    burger.onclick = () => {
+      const aberto = menu.classList.toggle("open");
+      burger.setAttribute("aria-expanded", aberto);
+    };
+
+    $$("#menu a").forEach(a => {
+      a.onclick = () => {
+        menu.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      };
+    });
+
+    // Destaca o link da seção visível
+    const navLinks = $$("a.l");
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(l => l.classList.toggle("on", l.getAttribute("href") === "#" + e.target.id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+
+    navLinks.forEach(a => {
+      const sec = $(a.getAttribute("href"));
+      if (sec) spy.observe(sec);
+    });
+
+    /* ========== Filtros de projetos ========== */
+    $("#flt").onclick = e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+
+      $$("#flt button").forEach(x => x.classList.toggle("on", x === btn));
+      $$(".pj").forEach(p => {
+        const esconder = btn.dataset.f !== "Todos" && p.dataset.c !== btn.dataset.f;
+        p.classList.toggle("hide", esconder);
+      });
+    };
+
+    /* ========== Reveal, barras e contadores ========== */
+    const contar = el => {
+      const alvo = +el.dataset.n;
+      const sufixo = el.dataset.s;
+      const inicio = performance.now();
+
+      (function passo(agora) {
+        const p = Math.min((agora - inicio) / 1400, 1);
+        el.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))) + sufixo;
+        if (p < 1) requestAnimationFrame(passo);
+      })(inicio);
+    };
+
+    const reveal = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+
+        const el = e.target;
+        el.classList.add("in");
+
+        const barra = $(".bar i", el);
+        if (barra) barra.style.width = barra.dataset.w + "%";
+
+        if (el.dataset.n) contar(el);
+        $$("[data-n]", el).forEach(contar);
+
+        reveal.unobserve(el);
+      });
+    }, { threshold: .15 });
+
+    $$(".rv").forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 70 + "ms";
+      reveal.observe(el);
+    });
+
+    $$("[data-n]").forEach(el => {
+      if (!el.closest(".rv")) reveal.observe(el);
+    });
+
+    /* ========== Formulário ========== */
+    const regras = {
+      nm: v => v.trim().length >= 2,
+      em: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      as: v => v.trim().length >= 3,
+      ms: v => v.trim().length >= 10
+    };
+
+    const validar = campo => {
+      const input = $("#" + campo);
+      const ok = regras[campo](input.value);
+      const wrapper = input.parentElement;
+
+      wrapper.classList.toggle("err", !ok);
+      wrapper.classList.toggle("ok", ok);
+      input.setAttribute("aria-invalid", !ok);
+      return ok;
+    };
+
+    Object.keys(regras).forEach(campo => {
+      const input = $("#" + campo);
+      input.addEventListener("blur", () => validar(campo));
+      input.addEventListener("input", () => {
+        if (input.parentElement.classList.contains("err")) validar(campo);
+      });
+    });
+
+    $("#fm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const status = $("#st");
+      const valido = Object.keys(regras).map(validar).every(Boolean);
+
+      if (!valido) {
+        status.style.color = "#ff8497";
+        status.textContent = "Corrija os campos destacados.";
+        return;
+      }
+
+      status.style.color = "#2fd68b";
+      status.textContent = "Mensagem enviada com sucesso! Retornarei em breve.";
+      e.target.reset();
+      $$(".f").forEach(f => f.classList.remove("ok"));
+    });
+  </script>
+</body>
+
+</html>
